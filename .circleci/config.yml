@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Install deps
+          command: sudo apt-get update && sudo dpkg --add-architecture i386 && sudo apt-get install -y git cmake pkg-config libssl-dev libcurl4-openssl-dev qtbase5-dev qtwebengine5-dev g++-multilib libpng-dev:i386 libx11-dev:i386 libxi-dev:i386 libcurl4-openssl-dev:i386 libudev-dev:i386 libevdev-dev:i386 libegl1-mesa-dev:i386 imagemagick
+      - run:
+          name: Run the buildscript
+          command: ./build-client-ui.sh
