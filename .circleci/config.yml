@@ -14,3 +14,5 @@ jobs:
       - run:
           name: Run the buildscript
           command: . /opt/qt59/bin/qt59-env.sh && ./build-client-ui.sh
+      - store_artifacts:
+          path: Minecraft_Bedrock_Edition_launcher-x86_64.AppImage
