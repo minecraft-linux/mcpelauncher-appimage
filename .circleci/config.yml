@@ -7,7 +7,10 @@ jobs:
       - checkout
       - run:
           name: Install deps
-          command: dpkg --add-architecture i386 && apt-get update && apt-get install -y git cmake pkg-config libssl-dev libcurl4-openssl-dev qtbase5-dev qtwebengine5-dev g++-multilib libpng-dev:i386 libx11-dev:i386 libxi-dev:i386 libssl-dev libudev-dev:i386 libevdev-dev:i386 libegl1-mesa-dev:i386 imagemagick
+          command: dpkg --add-architecture i386 && apt-get update && apt-get install -y git cmake pkg-config libssl-dev libcurl4-openssl-dev g++-multilib libpng-dev:i386 libx11-dev:i386 libxi-dev:i386 libssl-dev libudev-dev:i386 libevdev-dev:i386 libegl1-mesa-dev:i386 imagemagick
+      - run:
+          name: Install Qt 5.9
+          command: add-apt-repository -y ppa:beineri/opt-qt596-xenial && sudo apt-get update && apt-get install -y qt59base qt59declarative qt59quickcontrols qt59quickcontrols2 qt59webengine
       - run:
           name: Run the buildscript
-          command: ./build-client-ui.sh
+          command: /opt/qt59/bin/qt59-env.sh && ./build-client-ui.sh
