@@ -96,11 +96,23 @@ chmod +x linuxdeploy*-x86_64.AppImage
 
 export ARCH=x86_64
 
-./linuxdeploy-x86_64.AppImage --appdir AppDir -i mcpelauncher-icon.png -d mcpelauncher.desktop
+mkdir linuxdeploy
+cd linuxdeploy
+../linuxdeploy-x86_64.AppImage --appimage-extract
+cd ..
+mkdir linuxdeploy-plugin-qt
+cd linuxdeploy-plugin-qt
+../linuxdeploy-plugin-qt-x86_64.AppImage --appimage-extract
+cd ..
+LINUXDEPLOY_BIN=linuxdeploy/squashfs-root/AppRun
+LINUXDEPLOY_PLUGIN_QT_BIN=linuxdeploy-plugin-qt/squashfs-root/AppRun
+
+
+$LINUXDEPLOY_BIN --appdir AppDir -i mcpelauncher-icon.png -d mcpelauncher.desktop
 
 export QML_SOURCES_PATHS=ui/mcpelauncher-ui-qt/qml/
-./linuxdeploy-plugin-qt-x86_64.AppImage --appdir AppDir
+$LINUXDEPLOY_PLUGIN_QT_BIN --appdir AppDir
 
-./linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+$LINUXDEPLOY_BIN --appdir AppDir --output appimage
 
 cp Minecraft_*.AppImage "$OLD_CWD"
