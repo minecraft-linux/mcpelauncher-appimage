@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Minecraft Bedrock Edition launcher
+Exec=mcpelauncher-ui-qt
+Comment=Run Minecraft: Bedrock Edition Launcher
+Terminal=false
+Type=Application
+Icon=mcpelauncher-icon

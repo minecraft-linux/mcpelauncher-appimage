@@ -84,7 +84,7 @@ cp -R AppDir "$OLD_CWD"/
 # convert the icon to 512x512
 convert ui/mcpelauncher-ui-qt/Resources/proprietary/mcpelauncher-icon.png -resize 512x512 mcpelauncher-icon.png
 # get the .desktop file
-cp /home/paul/appimage/mcpelauncher.desktop mcpelauncher.desktop
+cp ${OLD_CWD}/mcpelauncher.desktop mcpelauncher.desktop
 
 # download linuxdeploy and make it executable
 wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
